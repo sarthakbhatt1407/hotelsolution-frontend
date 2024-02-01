@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import QrReader from "react-qr-scanner";
+import { QrScanner } from "@yudiel/react-qr-scanner";
+
 const App = () => {
   const [data, setData] = useState("No result");
   const [showScan, setShowScan] = useState(false);
@@ -14,19 +15,16 @@ const App = () => {
         Scan to login
       </button>
       {showScan && (
-        <QrReader
-          facingMode="rear"
-          onResult={(result, error) => {
-            if (!!result) {
-              setData(result?.text);
-            }
-
-            if (!!error) {
-              console.info(error);
-            }
-          }}
-          style={{ width: "100%" }}
-        />
+        <>
+          {" "}
+          <QrScanner
+            onDecode={(result) => {
+              setData(result);
+              setShowScan(!showScan);
+            }}
+            onError={(error) => console.log(error?.message)}
+          />
+        </>
       )}
       <p>{data}</p>
     </div>
