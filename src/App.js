@@ -44,7 +44,7 @@ const App = () => {
                 password: resArr[1].trim(),
               };
               console.log(obj);
-              setData(obj);
+              setData(resArr);
               setShowScan(!showScan);
               const onSubmitHandler = async (e) => {
                 const res = await fetch(`http://localhost:5000/user/login`, {
@@ -60,6 +60,7 @@ const App = () => {
                   setData("Login Successfull");
                 }
                 if (!res.ok) {
+                  setData(data.message);
                 }
               };
               onSubmitHandler();
