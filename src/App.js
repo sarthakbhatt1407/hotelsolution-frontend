@@ -57,6 +57,7 @@ const App = () => {
                 const data = await res.json();
                 console.log(data);
                 if (res.ok) {
+                  alert(data.message);
                   setData("Login Successfull");
                 }
                 if (!res.ok) {
