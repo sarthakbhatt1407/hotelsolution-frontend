@@ -44,6 +44,7 @@ const App = () => {
                 password: resArr[1].trim(),
               };
               console.log(obj);
+              setData(obj);
               setShowScan(!showScan);
               const onSubmitHandler = async (e) => {
                 const res = await fetch(`http://localhost:5000/user/login`, {
