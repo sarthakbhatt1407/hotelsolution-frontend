@@ -47,16 +47,13 @@ const App = () => {
               setData(resArr);
               setShowScan(!showScan);
               const onSubmitHandler = async (e) => {
-                const res = await fetch(
-                  `https://hotelsolution-backend.vercel.app/user/login`,
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(obj),
-                  }
-                );
+                const res = await fetch(`http://localhost:5000/user/login`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(obj),
+                });
                 const data = await res.json();
                 console.log(data);
                 if (res.ok) {
